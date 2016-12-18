@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rackian.com.controller.SetupController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" style="-fx-background-color: #FFA000;" text="DYNAMIC DOMAIN CONFIGURATION" textAlignment="RIGHT" textFill="WHITE">
@@ -72,7 +74,7 @@
             </VBox>
             <VBox>
                <children>
-                  <TextField minWidth="220.0" promptText="Username">
+                  <TextField fx:id="username" minWidth="220.0" promptText="Username">
                      <padding>
                         <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
                      </padding>
@@ -83,7 +85,7 @@
                         <Font name="Open Sans" size="16.0" />
                      </font>
                   </TextField>
-                  <PasswordField minWidth="220.0" promptText="********">
+                  <PasswordField fx:id="password" minWidth="220.0" promptText="********">
                      <font>
                         <Font name="Open Sans" size="16.0" />
                      </font>
@@ -94,7 +96,7 @@
                         <Insets bottom="40.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <TextField minWidth="220.0" promptText="example.domain.com">
+                  <TextField fx:id="domain" minWidth="220.0" promptText="example.domain.com">
                      <padding>
                         <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
                      </padding>
@@ -105,7 +107,7 @@
                         <Font name="Open Sans" size="16.0" />
                      </font>
                   </TextField>
-                  <TextField minWidth="220.0" promptText="Minutes...">
+                  <TextField fx:id="refreshTimeInSeconds" minWidth="220.0" promptText="Minutes...">
                      <padding>
                         <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
                      </padding>
@@ -125,7 +127,7 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Save">
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#save" text="Save">
                <padding>
                   <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                </padding>
