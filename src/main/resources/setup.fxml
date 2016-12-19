@@ -8,15 +8,15 @@
 
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rackian.com.controller.SetupController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" style="-fx-background-color: #FFA000;" text="DYNAMIC DOMAIN CONFIGURATION" textAlignment="RIGHT" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" style="-fx-background-color: #FFA000;" text="CONFIGURATION" textAlignment="RIGHT" textFill="WHITE">
          <padding>
-            <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+            <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
          </padding>
          <VBox.margin>
             <Insets bottom="50.0" />
          </VBox.margin>
          <font>
-            <Font name="Open Sans Bold" size="18.0" />
+            <Font name="Open Sans Semibold" size="18.0" />
          </font>
       </Label>
       <HBox alignment="CENTER">
