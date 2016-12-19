@@ -1,10 +1,19 @@
 package rackian.com.controller;
 
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import rackian.com.App;
 import rackian.com.model.configuration.ConfigurationSetup;
 import rackian.com.model.json.JacksonParser;
 import rackian.com.model.json.JsonParser;
@@ -12,6 +21,7 @@ import rackian.com.model.persistence.BasicFiler;
 import rackian.com.model.persistence.Filer;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,6 +40,10 @@ public class SetupController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) username.getScene().getWindow();
+            stage.setOnCloseRequest((e) -> exitApplication(stage, e));
+        });
         ConfigurationSetup cs;
         if ((cs = getConfigurationFromFile(new File("src/config/setup.json"))) != null) {
             fillFields(cs);
@@ -91,6 +105,19 @@ public class SetupController implements Initializable {
         password.setText(cs.getPassword());
         domain.setText(cs.getDomain());
         refreshTimeInSeconds.setText(Integer.toString(cs.getResfreshTimeInSeconds()));
+    }
+
+    private void exitApplication(Stage stage, WindowEvent e) {
+        e.consume();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("status.fxml"));
+            Pane rootPane = loader.load();
+            stage.setScene(new Scene(rootPane));
+            stage.centerOnScreen();
+            stage.sizeToScene();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
     
 }
