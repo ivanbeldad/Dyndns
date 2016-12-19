@@ -1,5 +1,6 @@
 package rackian.com.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ public class SetupController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(() -> username.getParent().requestFocus());
         ConfigurationSetup cs;
         if ((cs = getConfigurationFromFile(new File("src/config/setup.json"))) != null) {
             fillFields(cs);
