@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rackian.com.controller.StatusController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" style="-fx-background-color: #FFA000;" text="DYNAMIC DOMAIN STATUS" textAlignment="RIGHT" textFill="WHITE">
+         <font>
+            <Font name="Open Sans Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+         </padding>
+      </Label>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+         <children>
+            <VBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label text="Current IP" textAlignment="CENTER">
+                     <font>
+                        <Font name="Open Sans" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Real IP" textAlignment="CENTER">
+                     <font>
+                        <Font name="Open Sans" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Last Update" textAlignment="CENTER">
+                     <font>
+                        <Font name="Open Sans" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Status" textAlignment="CENTER">
+                     <font>
+                        <Font name="Open Sans" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="CENTER_LEFT">
+               <children>
+                  <Label fx:id="currentIp" text="192.168.1.1" textFill="#616161">
+                     <font>
+                        <Font name="Open Sans" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="realIp" text="192.168.1.1" textFill="#616161">
+                     <font>
+                        <Font name="Open Sans" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lastUpdate" text="19/12/2016 03:12" textFill="#616161">
+                     <font>
+                        <Font name="Open Sans" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="status" text="OK" textFill="#616161">
+                     <font>
+                        <Font name="Open Sans Semibold" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <VBox alignment="CENTER">
+         <children>
+            <Hyperlink fx:id="configurationLink" onAction="#openConfiguration" style="-fx-border-color: transparent;" text="Configuration">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </Hyperlink>
+         </children>
+         <VBox.margin>
+            <Insets bottom="30.0" left="10.0" right="10.0" />
+         </VBox.margin>
+      </VBox>
+   </children>
+</VBox>
