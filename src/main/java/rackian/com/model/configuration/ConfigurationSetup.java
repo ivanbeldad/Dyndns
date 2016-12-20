@@ -1,7 +1,12 @@
 package rackian.com.model.configuration;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.File;
+
 public class ConfigurationSetup {
     
+    @JsonIgnore
+    public static final File file = new File("src/config/setup.json");
     private String domain;
     private String username;
     private String password;

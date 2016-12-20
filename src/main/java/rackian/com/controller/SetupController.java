@@ -1,21 +1,35 @@
 package rackian.com.controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import rackian.com.StageController;
+import rackian.com.model.Observer;
+import rackian.com.model.Subject;
 import rackian.com.model.configuration.ConfigurationSetup;
 import rackian.com.model.json.JacksonParser;
 import rackian.com.model.json.JsonParser;
 import rackian.com.model.persistence.BasicFiler;
 import rackian.com.model.persistence.Filer;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class SetupController implements Initializable {
+public class SetupController implements Initializable, Subject {
     
+    @JsonIgnore
+    private List<Observer> observers;
+    @JsonIgnore
+    private StageController stageController;
     @FXML
     private TextField username;
     @FXML
@@ -26,6 +40,13 @@ public class SetupController implements Initializable {
     private TextField refreshTimeInMinutes;
     @FXML
     private Button saveButton;
+    @FXML
+    private Hyperlink statusLink;
+    
+    public SetupController(StageController stageController) {
+        this.stageController = stageController;
+        this.observers = new ArrayList<>();
+    }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -34,14 +55,33 @@ public class SetupController implements Initializable {
         if ((cs = getConfigurationFromFile(new File("src/config/setup.json"))) != null) {
             fillFields(cs);
         }
+
+        refreshTimeInMinutes.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                TextField field = (TextField) event.getSource();
+                if (field.getText().length() > 5) {
+                    event.consume();
+                }
+                if (!event.getCharacter().matches("[0-9]")) {
+                    event.consume();
+                }
+            }
+        });
     }
     
     @FXML
     private boolean save() {
         if (!checkFields()) return false;
-        cleanFields();
+        trimFields();
         if (!toFile()) return false;
+        notifyObservers();
         return true;
+    }
+    
+    @FXML
+    private void openStatus() throws IOException {
+        stageController.launchStatus();
     }
     
     private boolean checkFields() {
@@ -72,7 +112,7 @@ public class SetupController implements Initializable {
         return true;
     }
     
-    private void cleanFields() {
+    private void trimFields() {
         username.setText(username.getText().trim());
         password.setText(password.getText().trim());
         domain.setText(domain.getText().trim());
@@ -80,7 +120,7 @@ public class SetupController implements Initializable {
     }
     
     private boolean toFile() {
-        Filer filer = new BasicFiler(new File("src/config/setup.json"));
+        Filer filer = new BasicFiler(ConfigurationSetup.file);
         ConfigurationSetup cs = createConfiguration();
         JsonParser<ConfigurationSetup> parser = new JacksonParser<>();
         if (filer.save(parser.objectToJson(cs))) {
@@ -110,7 +150,22 @@ public class SetupController implements Initializable {
         username.setText(cs.getUsername());
         password.setText(cs.getPassword());
         domain.setText(cs.getDomain());
-        refreshTimeInMinutes.setText(Integer.toString(cs.getResfreshTimeInSeconds()));
+        refreshTimeInMinutes.setText(Integer.toString(cs.getResfreshTimeInSeconds()/60));
+    }
+    
+    @Override
+    public void addObserver(Observer observer) {
+        this.observers.add(observer);
+    }
+    
+    @Override
+    public void removeObserver(Observer observer) {
+        this.observers.remove(observer);
+    }
+    
+    @Override
+    public void notifyObservers() {
+        this.observers.forEach((o) -> o.notified(createConfiguration()));
     }
     
 }

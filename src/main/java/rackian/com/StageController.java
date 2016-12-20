@@ -5,39 +5,94 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import rackian.com.controller.SetupController;
+import rackian.com.controller.StatusController;
+import rackian.com.model.dnschanger.DnsChangerService;
 
 public class StageController {
+
+    private DnsChangerService dnsChangerService;
+    private Stage stage;
+    private StatusController statusController;
+    private SetupController setupController;
+    private Scene sceneStatus;
+    private Scene sceneSetup;
     
-    public static void launchStatus(Stage stage) {
+    public void init() {
         Platform.runLater(() -> {
             try {
-                FXMLLoader loader = new FXMLLoader(StageController.class.getClassLoader().getResource("status.fxml"));
-                Pane rootPane = loader.load();
-                stage.setScene(new Scene(rootPane));
-                stage.centerOnScreen();
-                stage.sizeToScene();
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
+                FXMLLoader loaderStatus = new FXMLLoader(StageController.class.getClassLoader().getResource("status.fxml"));
+                FXMLLoader loaderSetup = new FXMLLoader(StageController.class.getClassLoader().getResource("setup.fxml"));
+                loaderStatus.setController(this.statusController);
+                loaderSetup.setController(this.setupController);
+                Pane rootPaneStatus = loaderStatus.load();
+                Pane rootPaneSetup = loaderSetup.load();
+                Scene sceneStatus = new Scene(rootPaneStatus);
+                Scene sceneSetup = new Scene(rootPaneSetup);
+                this.sceneStatus = sceneStatus;
+                this.sceneSetup = sceneSetup;
+            } catch (Exception e) {
             }
         });
     }
     
-    public static void launchSetup(Stage stage) {
+    public void launchStatus() {
         Platform.runLater(() -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(StageController.class.getClassLoader().getResource("setup.fxml"));
-                Pane rootPane = loader.load();
-                stage.setScene(new Scene(rootPane));
-                stage.centerOnScreen();
-                stage.sizeToScene();
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            stage.setScene(sceneStatus);
+            fitStage();
         });
+    }
+
+    public void launchSetup() {
+        Platform.runLater(() -> {
+            stage.setScene(sceneSetup);
+            fitStage();
+        });
+    }
+    
+    private void fitStage() {
+        stage.centerOnScreen();
+        stage.sizeToScene();
+        stage.show();
+    }
+    
+    public Stage getStage() {
+        return stage;
+    }
+    
+    public void setStage(Stage stage) {
+        this.stage = stage;
+        Platform.runLater(() -> {
+            if (statusController != null) {
+                this.stage.setOnShown((e) -> dnsChangerService.addObserver(statusController));
+            }
+            
+            this.stage.setOnHidden((e) -> dnsChangerService.removeObserver(statusController));
+        });
+    }
+    
+    public StatusController getStatusController() {
+        return statusController;
+    }
+    
+    public void setStatusController(StatusController statusController) {
+        this.statusController = statusController;
+    }
+    
+    public SetupController getSetupController() {
+        return setupController;
+    }
+    
+    public void setSetupController(SetupController setupController) {
+        this.setupController = setupController;
+        if (this.dnsChangerService != null)
+            this.setupController.addObserver(this.dnsChangerService);
+    }
+    
+    public void setDnsChangerService(DnsChangerService dnsChangerService) {
+        this.dnsChangerService = dnsChangerService;
+        if (this.setupController != null)
+            this.setupController.addObserver(this.dnsChangerService);
     }
     
 }

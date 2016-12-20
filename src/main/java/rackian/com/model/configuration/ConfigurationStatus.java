@@ -2,8 +2,12 @@ package rackian.com.model.configuration;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class ConfigurationStatus {
+import java.io.File;
 
+public class ConfigurationStatus {
+    
+    @JsonIgnore
+    public static final File file = new File("src/config/status.json");
     private String currentIp;
     private String realIp;
     private Status status;

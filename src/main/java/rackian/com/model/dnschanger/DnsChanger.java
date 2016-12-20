@@ -1,9 +1,10 @@
 package rackian.com.model.dnschanger;
 
 import rackian.com.model.configuration.ConfigurationSetup;
+import rackian.com.model.configuration.ConfigurationStatus;
 
 public interface DnsChanger {
     
-    boolean changeDns(ConfigurationSetup cs);
+    ConfigurationStatus changeDns(ConfigurationSetup cs);
     
 }

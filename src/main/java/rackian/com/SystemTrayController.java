@@ -1,15 +1,14 @@
 package rackian.com;
 
-import javafx.stage.Stage;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class SystemTrayController {
     
-    private Stage stage;
+    private StageController stageController;
     
-    public SystemTrayController(Stage stage) {
-        this.stage = stage;
+    public SystemTrayController(StageController stageController) {
+        this.stageController = stageController;
     }
     
     public void init() {
@@ -18,11 +17,11 @@ public class SystemTrayController {
             SystemTray tray = SystemTray.getSystemTray();
             Image image = Toolkit.getDefaultToolkit().getImage("src/main/resources/logo16.png");
             PopupMenu popup = new PopupMenu();
-            addItemToMenu(popup, "Current Status", (e) -> StageController.launchStatus(stage));
-            addItemToMenu(popup, "Configuration", (e) -> StageController.launchSetup(stage));
+            addItemToMenu(popup, "Current Status", (e) -> stageController.launchStatus());
+            addItemToMenu(popup, "Configuration", (e) -> stageController.launchSetup());
             addItemToMenu(popup, "Exit", (e) -> System.exit(0));
             trayIcon = new TrayIcon(image, "DynDns", popup);
-            trayIcon.addActionListener((e) -> StageController.launchSetup(stage));
+            trayIcon.addActionListener((e) -> stageController.launchStatus());
             try {
                 tray.add(trayIcon);
             } catch (AWTException e) {
@@ -38,5 +37,5 @@ public class SystemTrayController {
         menuItem.addActionListener(listener);
         menu.add(menuItem);
     }
-    
+
 }
