@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" style="-fx-background-color: #FFA000;" text="STATUS" textAlignment="RIGHT" textFill="WHITE">
-         <font>
-            <Font name="Open Sans Semibold" size="18.0" />
-         </font>
+      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="title" text="STATUS" textAlignment="RIGHT" textFill="WHITE">
          <padding>
-            <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
+            <Insets bottom="15.0" left="40.0" right="40.0" top="15.0" />
          </padding>
+         <font>
+            <Font name="Open Sans Extrabold" size="28.0" />
+         </font>
       </Label>
+      <Pane prefHeight="1.0" style="-fx-background-color: #bbb;" />
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <VBox alignment="TOP_CENTER">
+            <VBox alignment="TOP_RIGHT">
                <children>
                   <Label text="Current IP" textAlignment="CENTER">
                      <font>
@@ -115,7 +117,7 @@
                         <Insets />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="statusMessage" alignment="CENTER" contentDisplay="CENTER" maxWidth="175.0" text="Error message information" textFill="#464646" wrapText="true">
+                  <Label fx:id="statusMessage" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="175.0" text="Error message information" textFill="#464646" wrapText="true">
                      <font>
                         <Font name="Open Sans" size="13.0" />
                      </font>
