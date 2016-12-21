@@ -1,8 +1,8 @@
-package rackian.com.model.dnschanger;
+package com.rackian.model.dnschanger;
 
-import rackian.com.model.configuration.ConfigurationSetup;
-import rackian.com.model.configuration.ConfigurationStatus;
-import rackian.com.model.configuration.Status;
+import com.rackian.model.configuration.ConfigurationSetup;
+import com.rackian.model.configuration.ConfigurationStatus;
+import com.rackian.model.configuration.Status;
 import sun.misc.BASE64Encoder;
 
 import javax.net.ssl.HttpsURLConnection;

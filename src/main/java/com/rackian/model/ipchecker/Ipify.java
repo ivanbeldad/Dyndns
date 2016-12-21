@@ -1,4 +1,4 @@
-package rackian.com.model.ipchecker;
+package com.rackian.model.ipchecker;
 
 import java.io.BufferedReader;
 import java.io.IOException;

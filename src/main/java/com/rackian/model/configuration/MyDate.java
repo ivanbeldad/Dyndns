@@ -1,4 +1,4 @@
-package rackian.com.model.configuration;
+package com.rackian.model.configuration;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

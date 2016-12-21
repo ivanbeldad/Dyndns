@@ -1,7 +1,10 @@
-package rackian.com.controller;
+package com.rackian.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.rackian.model.configuration.ConfigurationSetup;
+import com.rackian.model.json.JacksonParser;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,14 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import rackian.com.StageController;
-import rackian.com.model.Observer;
-import rackian.com.model.Subject;
-import rackian.com.model.configuration.ConfigurationSetup;
-import rackian.com.model.json.JacksonParser;
-import rackian.com.model.json.JsonParser;
-import rackian.com.model.persistence.BasicFiler;
-import rackian.com.model.persistence.Filer;
+import com.rackian.StageController;
+import com.rackian.model.Observer;
+import com.rackian.model.Subject;
+import com.rackian.model.json.JsonParser;
+import com.rackian.model.persistence.BasicFiler;
+import com.rackian.model.persistence.Filer;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -68,6 +69,13 @@ public class SetupController implements Initializable, Subject {
                 }
             }
         });
+    
+        saveButton.styleProperty().bind(
+                new SimpleStringProperty("-fx-base: ")
+                        .concat("#FF0000")
+                        .concat(";")
+                        .concat("-fx-font-size: 20px;")
+        );
     }
     
     @FXML

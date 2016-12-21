@@ -1,15 +1,16 @@
-package rackian.com.model.dnschanger;
+package com.rackian.model.dnschanger;
 
+import com.rackian.model.Observer;
+import com.rackian.model.Subject;
+import com.rackian.model.configuration.ConfigurationSetup;
+import com.rackian.model.configuration.ConfigurationStatus;
+import com.rackian.model.configuration.Status;
+import com.rackian.model.json.JacksonParser;
+import com.rackian.model.json.JsonParser;
+import com.rackian.model.persistence.BasicFiler;
+import com.rackian.model.persistence.Filer;
 import javafx.application.Platform;
-import rackian.com.model.Observer;
-import rackian.com.model.Subject;
-import rackian.com.model.configuration.ConfigurationSetup;
-import rackian.com.model.configuration.ConfigurationStatus;
-import rackian.com.model.configuration.Status;
-import rackian.com.model.json.JacksonParser;
-import rackian.com.model.json.JsonParser;
-import rackian.com.model.persistence.BasicFiler;
-import rackian.com.model.persistence.Filer;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -20,6 +21,7 @@ public class DnsChangerService implements Runnable, Subject, Observer {
     private List<Observer> observers;
     private DnsChanger dnsChanger;
     private ConfigurationSetup configurationSetup;
+    private final Object lock = new Object();
     
     public DnsChangerService(DnsChanger dnsChanger, ConfigurationSetup configurationSetup) {
         this.observers = new ArrayList<>();
@@ -42,7 +44,7 @@ public class DnsChangerService implements Runnable, Subject, Observer {
                 }
                 saveConfigurationStatus(configurationStatus);
                 Platform.runLater(() -> notifyObservers());
-                Thread.sleep(configurationSetup.getResfreshTimeInSeconds() * 1000);
+                synchronized (lock) { lock.wait(configurationSetup.getResfreshTimeInSeconds()); }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -89,6 +91,7 @@ public class DnsChangerService implements Runnable, Subject, Observer {
     public void notified(Object args) {
         if (args instanceof ConfigurationSetup) {
             this.configurationSetup = (ConfigurationSetup) args;
+            synchronized (lock) { lock.notify(); }
         }
     }
     

@@ -1,19 +1,19 @@
-package rackian.com;
+package com.rackian;
 
+import com.rackian.model.configuration.ConfigurationSetup;
+import com.rackian.model.dnschanger.GoogleDnsChanger;
+import com.rackian.model.json.JacksonParser;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import rackian.com.controller.SetupController;
-import rackian.com.controller.StatusController;
-import rackian.com.model.configuration.ConfigurationSetup;
-import rackian.com.model.dnschanger.DnsChanger;
-import rackian.com.model.dnschanger.DnsChangerService;
-import rackian.com.model.dnschanger.GoogleDnsChanger;
-import rackian.com.model.json.JacksonParser;
-import rackian.com.model.json.JsonParser;
-import rackian.com.model.persistence.BasicFiler;
-import rackian.com.model.persistence.Filer;
+import com.rackian.controller.SetupController;
+import com.rackian.controller.StatusController;
+import com.rackian.model.dnschanger.DnsChanger;
+import com.rackian.model.dnschanger.DnsChangerService;
+import com.rackian.model.json.JsonParser;
+import com.rackian.model.persistence.BasicFiler;
+import com.rackian.model.persistence.Filer;
 import java.io.File;
 
 public class App extends Application {

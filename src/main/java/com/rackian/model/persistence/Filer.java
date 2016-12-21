@@ -1,4 +1,4 @@
-package rackian.com.model.persistence;
+package com.rackian.model.persistence;
 
 public interface Filer {
     

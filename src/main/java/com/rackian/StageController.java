@@ -1,13 +1,13 @@
-package rackian.com;
+package com.rackian;
 
+import com.rackian.controller.SetupController;
+import com.rackian.controller.StatusController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import rackian.com.controller.SetupController;
-import rackian.com.controller.StatusController;
-import rackian.com.model.dnschanger.DnsChangerService;
+import com.rackian.model.dnschanger.DnsChangerService;
 
 public class StageController {
 

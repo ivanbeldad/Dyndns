@@ -1,19 +1,19 @@
-package rackian.com.controller;
+package com.rackian.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.rackian.model.configuration.ConfigurationStatus;
+import com.rackian.model.ipchecker.IpFounder;
+import com.rackian.model.ipchecker.Ipify;
+import com.rackian.model.json.JacksonParser;
+import com.rackian.model.json.JsonParser;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import rackian.com.StageController;
-import rackian.com.model.Observer;
-import rackian.com.model.configuration.ConfigurationStatus;
-import rackian.com.model.ipchecker.IpFounder;
-import rackian.com.model.ipchecker.Ipify;
-import rackian.com.model.json.JacksonParser;
-import rackian.com.model.json.JsonParser;
-import rackian.com.model.persistence.BasicFiler;
-import rackian.com.model.persistence.Filer;
+import com.rackian.StageController;
+import com.rackian.model.Observer;
+import com.rackian.model.persistence.BasicFiler;
+import com.rackian.model.persistence.Filer;
 
 import java.io.IOException;
 import java.net.URL;

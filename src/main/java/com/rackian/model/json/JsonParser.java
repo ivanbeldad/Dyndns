@@ -1,4 +1,4 @@
-package rackian.com.model.json;
+package com.rackian.model.json;
 
 public interface JsonParser <T> {
     

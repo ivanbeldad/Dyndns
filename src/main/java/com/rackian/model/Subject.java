@@ -1,4 +1,4 @@
-package rackian.com.model;
+package com.rackian.model;
 
 public interface Subject {
     

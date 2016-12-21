@@ -1,15 +1,15 @@
-package rackian.com.model.configuration;
+package com.rackian.model.configuration;
 
 public enum Status {
     
     OK ("OK", "OK", "Ip changed"),
-    NO_CHANGES ("NO_CHANGES", "OK", "Without changes"),
-    NO_HOST ("NO_HOST", "ERROR", "Domain does not exists. Check domain configuration."),
-    NOT_FQDN ("NOT_FQDN", "ERROR", "Bad FQDN. Check domain configuration."),
-    BAD_AUTH ("BAD_AUTH", "ERROR", "Authentication error. Check username and password configuration."),
+    NO_CHANGES ("NO CHANGES", "OK", "Without changes"),
+    NO_HOST ("NO HOST", "ERROR", "Domain does not exists. Check domain configuration."),
+    NOT_FQDN ("NOT FQDN", "ERROR", "Bad FQDN. Check domain configuration."),
+    BAD_AUTH ("BAD AUTH", "ERROR", "Authentication error. Check username and password configuration."),
     ABUSE ("ABUSE", "WARNING", "Too much tries. Access blocked. Check after some hours if the problem is solved."),
-    BAD_AGENT ("BAD_AGENT", "ERROR", "Authentication error. Check username and password configuration."),
-    SERVICE_TMP_UNAVAILABLE ("SERVICE_TMP_UNAVAILABLE", "WARNING", "Service temporaly unavailable. Check in a while if the problem was solved."),
+    BAD_AGENT ("BAD AGENT", "ERROR", "Authentication error. Check username and password configuration."),
+    SERVICE_TMP_UNAVAILABLE ("SERVICE TMP UNAVAILABLE", "WARNING", "Service temporaly unavailable. Check in a while if the problem was solved."),
     UNKNOWN ("UNKNOWN", "ERROR", "Unknow error. Contact administrator for more information.");
     
     private final String name;

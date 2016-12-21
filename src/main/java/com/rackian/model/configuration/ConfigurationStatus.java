@@ -1,4 +1,4 @@
-package rackian.com.model.configuration;
+package com.rackian.model.configuration;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

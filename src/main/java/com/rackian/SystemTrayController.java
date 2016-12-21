@@ -1,4 +1,4 @@
-package rackian.com;
+package com.rackian;
 
 import java.awt.*;
 import java.awt.event.ActionListener;

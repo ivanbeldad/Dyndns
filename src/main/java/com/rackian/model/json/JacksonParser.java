@@ -1,4 +1,4 @@
-package rackian.com.model.json;
+package com.rackian.model.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
