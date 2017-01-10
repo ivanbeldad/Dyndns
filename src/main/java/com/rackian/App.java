@@ -1,6 +1,8 @@
 package com.rackian;
 
 import com.rackian.model.configuration.ConfigurationSetup;
+import com.rackian.model.configuration.ConfigurationStatus;
+import com.rackian.model.configuration.Status;
 import com.rackian.model.dnschanger.GoogleDnsChanger;
 import com.rackian.model.json.JacksonParser;
 import javafx.application.Application;
@@ -21,12 +23,28 @@ public class App extends Application {
     private static StageController stageController = createStageController();
     
     public static void main(String[] args) throws Exception {
+        initConfig();
         DnsChangerService dnsChangerService = createDnsChangerService();
         stageController.setDnsChangerService(dnsChangerService);
         Thread dnsChangerThread = new Thread(dnsChangerService);
         Thread fxThread = new Thread(App::launch);
         fxThread.start();
         dnsChangerThread.start();
+    }
+    
+    private static void initConfig() {
+        File configFolder = new File(System.getProperty("user.home").concat("/Dyndns"));
+        if (!configFolder.exists()) {
+            configFolder.mkdir();
+        }
+        File configStatus = ConfigurationStatus.file;
+        if (!configStatus.exists()) {
+            ConfigurationStatus cstatus = new ConfigurationStatus("","", Status.BAD_AUTH, 0);
+            JsonParser<ConfigurationStatus> parser = new JacksonParser<>();
+            String json = parser.objectToJson(cstatus);
+            Filer filer = new BasicFiler(ConfigurationStatus.file);
+            filer.save(json);
+        }
     }
     
     @Override
@@ -38,20 +56,19 @@ public class App extends Application {
         Platform.setImplicitExit(false);
         primaryStage.setTitle("DynDns");
         primaryStage.getIcons().addAll(
-                new Image("file:src/main/resources/logo16.png"),
-                new Image("file:src/main/resources/logo30.png"),
-                new Image("file:src/main/resources/logo32.png"),
-                new Image("file:src/main/resources/logo40.png"),
-                new Image("file:src/main/resources/logo48.png"),
-                new Image("file:src/main/resources/logo64.png")
+            new Image(getClass().getResourceAsStream("/img/logo16.png")),
+            new Image(getClass().getResourceAsStream("/img/logo30.png")),
+            new Image(getClass().getResourceAsStream("/img/logo32.png")),
+            new Image(getClass().getResourceAsStream("/img/logo40.png")),
+            new Image(getClass().getResourceAsStream("/img/logo48.png")),
+            new Image(getClass().getResourceAsStream("/img/logo64.png"))
         );
         primaryStage.setResizable(false);
         primaryStage.setOnCloseRequest((e) -> {
             e.consume();
             primaryStage.hide();
         });
-        File file = new File("src/config/setup.json");
-        if (!file.exists()) {
+        if (!ConfigurationSetup.file.exists()) {
             stageController.launchSetup();
         }
     }

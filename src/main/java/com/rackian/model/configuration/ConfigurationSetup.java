@@ -6,7 +6,7 @@ import java.io.File;
 public class ConfigurationSetup {
     
     @JsonIgnore
-    public static final File file = new File("src/config/setup.json");
+    public static final File file = new File(System.getProperty("user.home").concat("/Dyndns/setup.json"));
     private String domain;
     private String username;
     private String password;

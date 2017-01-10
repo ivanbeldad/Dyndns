@@ -7,7 +7,7 @@ import java.io.File;
 public class ConfigurationStatus {
     
     @JsonIgnore
-    public static final File file = new File("src/config/status.json");
+    public static final File file = new File(System.getProperty("user.home").concat("/Dyndns/status.json"));
     private String currentIp;
     private String realIp;
     private Status status;

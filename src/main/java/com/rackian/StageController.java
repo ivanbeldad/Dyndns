@@ -21,8 +21,8 @@ public class StageController {
     public void init() {
         Platform.runLater(() -> {
             try {
-                FXMLLoader loaderStatus = new FXMLLoader(StageController.class.getClassLoader().getResource("status.fxml"));
-                FXMLLoader loaderSetup = new FXMLLoader(StageController.class.getClassLoader().getResource("setup.fxml"));
+                FXMLLoader loaderStatus = new FXMLLoader(StageController.class.getClassLoader().getResource("view/status.fxml"));
+                FXMLLoader loaderSetup = new FXMLLoader(StageController.class.getClassLoader().getResource("view/setup.fxml"));
                 loaderStatus.setController(this.statusController);
                 loaderSetup.setController(this.setupController);
                 Pane rootPaneStatus = loaderStatus.load();

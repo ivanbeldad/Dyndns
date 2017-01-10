@@ -143,26 +143,27 @@
          </padding>
       </HBox>
       <HBox alignment="CENTER">
-         <children>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#save" styleClass="icon-film" text="Save Configuration" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="12.0" left="30.0" right="30.0" top="12.0" />
-               </padding>
-               <font>
-                  <Font name="Open Sans Semibold" size="16.0" />
-               </font>
-            </Button>
-         </children>
          <VBox.margin>
             <Insets bottom="35.0" />
          </VBox.margin>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-      </HBox>
-      <HBox alignment="CENTER" style="-fx-background-color: #eaeaea;">
          <children>
-            <Hyperlink fx:id="statusLink" onAction="#openStatus" text="Status">
+            <Button id="saveButton" fx:id="saveButton" mnemonicParsing="false" onAction="#save" text="Save Configuration" textAlignment="CENTER">
+               <padding>
+                  <Insets bottom="12.0" left="30.0" right="30.0" top="12.0" />
+               </padding>
+               <font>
+                  <Font name="Open Sans Semibold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Pane prefHeight="1.0" style="-fx-background-color: #999;" />
+      <HBox alignment="CENTER" style="-fx-background-color: #f0f0f0;">
+         <children>
+            <Hyperlink fx:id="statusLink" onAction="#openStatus" style="-fx-border-color: transparent;" text="Status">
                <font>
                   <Font name="Open Sans" size="16.0" />
                </font>
@@ -172,11 +173,11 @@
                <padding>
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </Hyperlink>
          </children>
-         <effect>
-            <DropShadow />
-         </effect>
       </HBox>
    </children>
 </VBox>
