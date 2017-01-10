@@ -1,0 +1,4 @@
+Username: LDX5doaS8wGjVgYJ
+Password: QMmsELS2HmfHFe4w
+Domain: tienda.lasmelias.com
+Resfresh Time: 60

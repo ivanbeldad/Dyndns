@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="title" text="STATUS" textAlignment="RIGHT" textFill="WHITE">
          <padding>
@@ -17,7 +18,6 @@
             <Font name="Open Sans Extrabold" size="28.0" />
          </font>
       </Label>
-      <Pane prefHeight="1.0" style="-fx-background-color: #bbb;" />
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
             <VBox alignment="TOP_RIGHT">
@@ -134,20 +134,20 @@
       </HBox>
       <HBox alignment="CENTER" />
       <Pane prefHeight="1.0" style="-fx-background-color: #999;" />
-      <VBox alignment="CENTER">
+      <HBox alignment="CENTER" style="-fx-background-color: #f0f0f0;">
          <children>
             <Hyperlink fx:id="configurationLink" onAction="#openConfiguration" style="-fx-border-color: transparent;" text="Configuration">
                <font>
                   <Font size="16.0" />
                </font>
                <padding>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </padding>
+               <HBox.margin>
+                  <Insets bottom="15.0" top="13.0" />
+               </HBox.margin>
             </Hyperlink>
          </children>
-         <VBox.margin>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="13.0" />
-         </VBox.margin>
-      </VBox>
+      </HBox>
    </children>
 </VBox>

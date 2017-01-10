@@ -1,0 +1,57 @@
+.body, .over-label {
+    -fx-background-color: #FAFAFA;
+}
+
+.body .title {
+    -fx-font-size: 24;
+    -fx-font-family: "Open Sans Semibold";
+    -fx-background-color: #448AFF;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: #555;
+    /*-fx-effect: dropshadow(gaussian , rgba(0,0,0,0.6), 10, 0.1, 0, 3);*/
+}
+
+.form-label, .form-input {
+    -fx-border-width: 0 0 2 0;
+    -fx-font-family: "Open Sans";
+    -fx-font-size: 16;
+}
+.form-label {
+    -fx-font-family: "Open Sans";
+    -fx-border-color: transparent;
+}
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: #aaa;
+    -fx-border-radius: 2;
+}
+.form-input:focused {
+    -fx-border-color: #448AFF;
+}
+
+.button {
+    -fx-font-family: "Open Sans Semibold";
+    -fx-font-size: 16;
+    -fx-padding: 12 24;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 50;
+    -fx-border-width: 1;
+    -fx-border-color: #448AFF;
+    -fx-text-fill: #448AFF;
+    -fx-border-radius: 50;
+}
+
+.button:hover{
+    -fx-background-color: #448AFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+}
+.button:pressed{
+    -fx-background-color: #3f75e2;
+    -fx-text-fill: #FFFFFF;
+}
+
+.hyperlink {
+    -fx-font-family: "Open Sans";
+    -fx-font-size: 16;
+}

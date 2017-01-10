@@ -53,7 +53,7 @@ public class SetupController implements Initializable, Subject {
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> username.getParent().requestFocus());
         ConfigurationSetup cs;
-        if ((cs = getConfigurationFromFile(new File("src/config/setup.json"))) != null) {
+        if ((cs = getConfigurationFromFile()) != null) {
             fillFields(cs);
         }
 
@@ -70,12 +70,12 @@ public class SetupController implements Initializable, Subject {
             }
         });
     
-        saveButton.styleProperty().bind(
-                new SimpleStringProperty("-fx-base: ")
-                        .concat("#FF0000")
-                        .concat(";")
-                        .concat("-fx-font-size: 20px;")
-        );
+//        saveButton.styleProperty().bind(
+//                new SimpleStringProperty("-fx-base: ")
+//                        .concat("#FF0000")
+//                        .concat(";")
+//                        .concat("-fx-font-size: 20px;")
+//        );
     }
     
     @FXML
@@ -147,9 +147,9 @@ public class SetupController implements Initializable, Subject {
         return cs;
     }
     
-    private ConfigurationSetup getConfigurationFromFile(File file) {
-        if (!file.exists()) return null;
-        Filer filer = new BasicFiler(file);
+    private ConfigurationSetup getConfigurationFromFile() {
+        if (!ConfigurationSetup.file.exists()) return null;
+        Filer filer = new BasicFiler(ConfigurationSetup.file);
         JsonParser<ConfigurationSetup> parser = new JacksonParser<>();
         return parser.jsonToObject(filer.getContent(), ConfigurationSetup.class);
     }

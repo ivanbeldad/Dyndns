@@ -86,6 +86,7 @@ public class StatusController implements Initializable, Observer {
             default:
                 status.setTextFill(Color.color(0.95, 0.25, 0.3));
         }
+        status.setText(cs.getStatus().getName());
         statusMessage.setText(cs.getStatus().getMessage());
     }
     
