@@ -1,25 +1,30 @@
 package com.rackian.model.configuration;
 
+import com.rackian.App;
+
+import java.util.ResourceBundle;
+
 public enum Status {
     
-    OK ("OK", "OK", "Ip changed"),
-    NO_CHANGES ("NO CHANGES", "OK", "Without changes"),
-    NO_HOST ("NO HOST", "ERROR", "Domain does not exists. Check domain configuration."),
-    NOT_FQDN ("NOT FQDN", "ERROR", "Bad FQDN. Check domain configuration."),
-    BAD_AUTH ("BAD AUTH", "ERROR", "Authentication error. Check username and password configuration."),
-    ABUSE ("ABUSE", "WARNING", "Too much tries. Access blocked. Check after some hours if the problem is solved."),
-    BAD_AGENT ("BAD AGENT", "ERROR", "Authentication error. Check username and password configuration."),
-    SERVICE_TMP_UNAVAILABLE ("SERVICE TMP UNAVAILABLE", "WARNING", "Service temporaly unavailable. Check in a while if the problem was solved."),
-    UNKNOWN ("UNKNOWN", "ERROR", "Unknow error. Contact administrator for more information.");
+    OK ("ok", "OK", "okMsg"),
+    NO_CHANGES ("noChanges", "OK", "noChangesMsg"),
+    NO_HOST ("noHost", "ERROR", "noHostMsg"),
+    NOT_FQDN ("notFQDN", "ERROR", "notFQDNMsg"),
+    BAD_AUTH ("badAuth", "ERROR", "badAuthMsg"),
+    ABUSE ("abuse", "WARNING", "abuseMsg"),
+    BAD_AGENT ("badAgent", "ERROR", "badAgentMsg"),
+    SERVICE_TMP_UNAVAILABLE ("serviceTmpUnavailable", "WARNING", "serviceTmpUnavailableMsg"),
+    UNKNOWN ("unknown", "ERROR", "unknownMsg");
     
     private final String name;
     private final String message;
     private final String type;
     
     Status(String name, String type, String message) {
-        this.name = name;
+        ResourceBundle bundle = ResourceBundle.getBundle("view.bundles.statusMessages", App.locale);
+        this.name = bundle.getString(name);
         this.type = type;
-        this.message = message;
+        this.message = bundle.getString(message);
     }
     
     public String getName() {

@@ -1,6 +1,7 @@
 package com.rackian.model.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 
 public class JacksonParser<T> implements JsonParser<T> {

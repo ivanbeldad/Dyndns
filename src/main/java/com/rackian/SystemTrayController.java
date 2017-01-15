@@ -3,6 +3,7 @@ package com.rackian;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 
 public class SystemTrayController {
     
@@ -18,10 +19,11 @@ public class SystemTrayController {
             SystemTray tray = SystemTray.getSystemTray();
             ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("img/logo16.png"));
 //            Image image = Toolkit.getDefaultToolkit().getImage("src/main/resources/logo16.png");
+            ResourceBundle bundle = ResourceBundle.getBundle("view.bundles.tray", App.locale);
             PopupMenu popup = new PopupMenu();
-            addItemToMenu(popup, "Current Status", (e) -> stageController.launchStatus());
-            addItemToMenu(popup, "Configuration", (e) -> stageController.launchSetup());
-            addItemToMenu(popup, "Exit", (e) -> System.exit(0));
+            addItemToMenu(popup, bundle.getString("status"), (e) -> stageController.launchStatus());
+            addItemToMenu(popup, bundle.getString("configuration"), (e) -> stageController.launchSetup());
+            addItemToMenu(popup, bundle.getString("exit"), (e) -> System.exit(0));
             trayIcon = new TrayIcon(image.getImage(), "DynDns", popup);
             trayIcon.addActionListener((e) -> stageController.launchStatus());
             try {

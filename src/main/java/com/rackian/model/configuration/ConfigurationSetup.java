@@ -1,6 +1,7 @@
 package com.rackian.model.configuration;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.File;
 
 public class ConfigurationSetup {

@@ -2,12 +2,14 @@ package com.rackian;
 
 import com.rackian.controller.SetupController;
 import com.rackian.controller.StatusController;
+import com.rackian.model.dnschanger.DnsChangerService;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import com.rackian.model.dnschanger.DnsChangerService;
+
+import java.util.ResourceBundle;
 
 public class StageController {
 
@@ -25,6 +27,8 @@ public class StageController {
                 FXMLLoader loaderSetup = new FXMLLoader(StageController.class.getClassLoader().getResource("view/setup.fxml"));
                 loaderStatus.setController(this.statusController);
                 loaderSetup.setController(this.setupController);
+                loaderStatus.setResources(ResourceBundle.getBundle("view.bundles.status", App.locale));
+                loaderSetup.setResources(ResourceBundle.getBundle("view.bundles.setup", App.locale));
                 Pane rootPaneStatus = loaderStatus.load();
                 Pane rootPaneSetup = loaderSetup.load();
                 Scene sceneStatus = new Scene(rootPaneStatus);

@@ -1,24 +1,28 @@
 package com.rackian;
 
+import com.rackian.controller.SetupController;
+import com.rackian.controller.StatusController;
 import com.rackian.model.configuration.ConfigurationSetup;
 import com.rackian.model.configuration.ConfigurationStatus;
 import com.rackian.model.configuration.Status;
+import com.rackian.model.dnschanger.DnsChanger;
+import com.rackian.model.dnschanger.DnsChangerService;
 import com.rackian.model.dnschanger.GoogleDnsChanger;
 import com.rackian.model.json.JacksonParser;
+import com.rackian.model.json.JsonParser;
+import com.rackian.model.persistence.BasicFiler;
+import com.rackian.model.persistence.Filer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import com.rackian.controller.SetupController;
-import com.rackian.controller.StatusController;
-import com.rackian.model.dnschanger.DnsChanger;
-import com.rackian.model.dnschanger.DnsChangerService;
-import com.rackian.model.json.JsonParser;
-import com.rackian.model.persistence.BasicFiler;
-import com.rackian.model.persistence.Filer;
+
 import java.io.File;
+import java.util.Locale;
 
 public class App extends Application {
+    
+    public static final Locale locale = Locale.getDefault();
     
     private static StageController stageController = createStageController();
     

@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.paint.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <VBox alignment="CENTER" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="title" text="STATUS" textAlignment="RIGHT" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="title" text="%title" textAlignment="RIGHT" textFill="WHITE">
          <padding>
             <Insets bottom="15.0" left="40.0" right="40.0" top="15.0" />
          </padding>
@@ -22,7 +18,7 @@
          <children>
             <VBox alignment="TOP_RIGHT">
                <children>
-                  <Label text="Current IP" textAlignment="CENTER">
+                  <Label text="%currentIp" textAlignment="CENTER">
                      <font>
                         <Font name="Open Sans" size="16.0" />
                      </font>
@@ -33,7 +29,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Real IP" textAlignment="CENTER">
+                  <Label text="%realIp" textAlignment="CENTER">
                      <font>
                         <Font name="Open Sans" size="16.0" />
                      </font>
@@ -44,7 +40,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Last Update" textAlignment="CENTER">
+                  <Label text="%lastUpdate" textAlignment="CENTER">
                      <font>
                         <Font name="Open Sans" size="16.0" />
                      </font>
@@ -55,7 +51,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Status" textAlignment="CENTER">
+                  <Label text="%status" textAlignment="CENTER">
                      <font>
                         <Font name="Open Sans" size="16.0" />
                      </font>
@@ -136,7 +132,7 @@
       <Pane prefHeight="1.0" style="-fx-background-color: #999;" />
       <HBox alignment="CENTER" style="-fx-background-color: #f0f0f0;">
          <children>
-            <Hyperlink fx:id="configurationLink" onAction="#openConfiguration" style="-fx-border-color: transparent;" text="Configuration">
+            <Hyperlink fx:id="configurationLink" onAction="#openConfiguration" style="-fx-border-color: transparent;" text="%configuration">
                <font>
                   <Font size="16.0" />
                </font>

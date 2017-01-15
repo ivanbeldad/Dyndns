@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.effect.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <VBox alignment="CENTER" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="title" text="CONFIGURATION" textAlignment="RIGHT" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="title" text="%title" textAlignment="RIGHT" textFill="WHITE">
          <padding>
             <Insets bottom="15.0" left="40.0" right="40.0" top="15.0" />
          </padding>
@@ -25,7 +21,7 @@
          <children>
             <VBox alignment="TOP_RIGHT">
                <children>
-                  <Label styleClass="form-label" text="Username">
+                  <Label fx:id="usernameLabel" styleClass="form-label" text="%username">
                      <padding>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
@@ -36,7 +32,7 @@
                         <Font name="Open Sans" size="16.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form-label" text="Password">
+                  <Label styleClass="form-label" text="%password">
                      <padding>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
@@ -47,7 +43,7 @@
                         <Font name="Open Sans" size="16.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form-label" text="Domain">
+                  <Label styleClass="form-label" text="%domain">
                      <padding>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
@@ -58,7 +54,7 @@
                         <Font name="Open Sans" size="16.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form-label" text="Refresh Time">
+                  <Label styleClass="form-label" text="%resfreshTime">
                      <padding>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
@@ -76,7 +72,7 @@
             </VBox>
             <VBox>
                <children>
-                  <TextField fx:id="username" minWidth="220.0" promptText="Username" styleClass="form-input">
+                  <TextField fx:id="username" minWidth="220.0" promptText="%usernameHolder" styleClass="form-input">
                      <padding>
                         <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
                      </padding>
@@ -98,7 +94,7 @@
                         <Insets bottom="40.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <TextField fx:id="domain" minWidth="220.0" promptText="example.domain.com" styleClass="form-input">
+                  <TextField fx:id="domain" minWidth="220.0" promptText="%domainHolder" styleClass="form-input">
                      <padding>
                         <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
                      </padding>
@@ -119,7 +115,7 @@
                               <Font name="Open Sans" size="16.0" />
                            </font>
                         </TextField>
-                        <Label style="-fx-background-color: transparent;" text="minutes" textFill="#5e5e5e" StackPane.alignment="CENTER_RIGHT">
+                        <Label style="-fx-background-color: transparent;" text="%unitTime" textFill="#5e5e5e" StackPane.alignment="CENTER_RIGHT">
                            <font>
                               <Font name="Open Sans" size="15.0" />
                            </font>
@@ -150,7 +146,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <Button id="saveButton" fx:id="saveButton" mnemonicParsing="false" onAction="#save" text="Save Configuration" textAlignment="CENTER">
+            <Button id="saveButton" fx:id="saveButton" mnemonicParsing="false" onAction="#save" text="%saveConfiguration" textAlignment="CENTER">
                <padding>
                   <Insets bottom="12.0" left="30.0" right="30.0" top="12.0" />
                </padding>
@@ -163,7 +159,7 @@
       <Pane prefHeight="1.0" style="-fx-background-color: #999;" />
       <HBox alignment="CENTER" style="-fx-background-color: #f0f0f0;">
          <children>
-            <Hyperlink fx:id="statusLink" onAction="#openStatus" style="-fx-border-color: transparent;" text="Status">
+            <Hyperlink fx:id="statusLink" onAction="#openStatus" style="-fx-border-color: transparent;" text="%status">
                <font>
                   <Font name="Open Sans" size="16.0" />
                </font>
